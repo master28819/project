@@ -3,7 +3,6 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,11 +16,11 @@ import io.github.cdimascio.dotenv.Dotenv;
 @Configuration
 public class SecurityConfig {
 
-    private final Dotenv dotenv = Dotenv.load();
-    // Fetch the password from the .env file
-    private String password = dotenv.get("PASSWORD");
+    private final Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
+    // Fetch the password from the .env file with a fallback to "defaultpassword" if not found.
+    private String password = dotenv.get("PASSWORD", "pass");
     
-    @Value("${spring.security.user.name}")    
+    @Value("${spring.security.user.name:defaultuser}")
     private String username;
     
     @Bean
@@ -40,8 +39,6 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-
-
         UserDetails user = User.builder()
             .username(username)
             .password(passwordEncoder.encode(password))
@@ -56,3 +53,4 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+    

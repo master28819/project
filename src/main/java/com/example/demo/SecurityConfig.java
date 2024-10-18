@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    private final Dotenv dotenv = Dotenv.configure().load();
+//    private final Dotenv dotenv = Dotenv.configure().load();
     // Fetch the password from the .env file with a fallback to "defaultpassword" if not found.
     // private String password = dotenv.get("PASSWORD", "pass");
     private String password = "pass";

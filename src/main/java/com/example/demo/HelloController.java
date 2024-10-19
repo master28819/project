@@ -1,20 +1,3 @@
-//package com.example.demo;
-//
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//
-//@Controller
-//public class HelloController {
-//
-////	@GetMapping("/")
-////    public String hello() {
-////        return "index";
-////    }
-//
-//    @GetMapping("/hello")
-//    public String hello(Model model) {
-//        model.addAttribute("message", "Spring Boot with Thymeleaf");
-//        return "hello"; // refers to hello.html in templates folder
-//    }
-//}
+version https://git-lfs.github.com/spec/v1
+oid sha256:56ef66b7b31a3c2fd6de06e86f13f70ecfbb5a5b3b6bc26b2ca246fd433cd7ae
+size 545
